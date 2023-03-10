@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>yours</title>
+    <header>
+      <h1>Yours.ai</h1>
+      <form action="/" method="POST">
+        <label for="input_text">Enter your message:</label><br>
+        {% if old_input %}
+        <input type="textarea" id="input_text" name="input_text" rows=3 placeholder="{{old_input}}"><br>
+        {% endif %}
+        {% if not old_input %}
+        <input type="textarea" id="input_text" name="input_text" rows=3><br>
+        {% endif %}
+        <input type="submit" value="Send">
+      </form>
+      {% if old_input %} 
+      <form action="/save" method="GET">
+        <button href="/save">Save</button>
+     </form>
+     {% endif %}
+
+    </header>
+  </head>
+  <body>
+
+    {% if response %}
+
+    {{ response | safe }}
+    {% endif %}
+    <!-- <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      header {
+        background-color: #f1f1f1;
+        padding: 30px;
+        text-align: center;
+      }
+      section {
+        margin-left: 20px;
+      }
+    </style> -->
+  </body>
+</html>
